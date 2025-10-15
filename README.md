@@ -44,7 +44,7 @@ export AWS_PROFILE=yourname
 
 ## Architecture Flow
 
-![Compliance Flow](assets/Shift-Left-Compliance-Pipeline.png)
+![Architecture Flow](assets/Shift-Left-Compliance-Pipeline.png)
 
 This diagram represents shift-left compliance - security and GRC checks are run during development, before infrastructure is deployed.
 
