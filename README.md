@@ -177,11 +177,11 @@ conftest test tfplan.json -p . --all-namespaces
 - Conftest runs rules in package main by default.
 - Because the policy is in package s3policy, I added --all-namespaces so it gets evaluated.
 
-| Tool          | Role                                          | Touches AWS?              |
-| ------------- | --------------------------------------------- | ------------------------- |
-| **Terraform** | Generates the plan of intended infrastructure | ✅ Queries AWS (read-only) |
-| **Conftest**  | Runs tests using OPA policies                 | ❌ No                      |
-| **OPA**       | Executes Rego logic inside Conftest           | ❌ No                      |
+| Tool          | Role                                          | Touches AWS?            |
+| ------------- | --------------------------------------------- | ----------------------- |
+| **Terraform** | Generates the plan of intended infrastructure | Queries AWS (read-only) |
+| **Conftest**  | Runs tests using OPA policies                 | No                      |
+| **OPA**       | Executes Rego logic inside Conftest           | No                      |
 
 Together, Terraform + Conftest + OPA form a pre-deployment compliance pipeline, validating your IaC before it ever reaches AWS.
 
