@@ -172,7 +172,6 @@ This approach demonstrates the Policy-as-Code model, where security and complian
 ```bash
 conftest test tfplan.json -p . --all-namespaces
 ```
-
 - By default, Conftest looks in a ./policy/ directory.
 - Since this Rego is in the current folder, I explicitly pointed Conftest to “here” with -p ..
 - Conftest runs rules in package main by default.
