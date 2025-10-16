@@ -163,6 +163,36 @@ Traditional security tools (e.g., AWS Config) run after deployment.
 In this lab, Conftest + OPA scan the Terraform plan itself, enabling shift-left compliance, where misconfigurations are detected before any resource is provisioned.
 This approach demonstrates the Policy-as-Code model, where security and compliance rules are version-controlled and automatically tested just like application code.
 
+<details> <summary> <strong>How Conftest, OPA, and Terraform Work Together</strong> (click to expand)</summary>
+
+- Conftest is a CLI wrapper that uses the OPA engine under the hood.
+- You give Conftest an input file (tfplan.json) and Rego policies.
+- Conftest invokes OPA to evaluate those policies against the plan and reports PASS/FAIL.
+- The Terraform plan JSON was tested with with:
+```bash
+conftest test tfplan.json -p . --all-namespaces
+```
+
+- By default, Conftest looks in a ./policy/ directory.
+- Since this Rego is in the current folder, I explicitly pointed Conftest to “here” with -p ..
+- Conftest runs rules in package main by default.
+- Because the policy is in package s3policy, I added --all-namespaces so it gets evaluated.
+
+| Tool          | Role                                          | Touches AWS?              |
+| ------------- | --------------------------------------------- | ------------------------- |
+| **Terraform** | Generates the plan of intended infrastructure | ✅ Queries AWS (read-only) |
+| **Conftest**  | Runs tests using OPA policies                 | ❌ No                      |
+| **OPA**       | Executes Rego logic inside Conftest           | ❌ No                      |
+
+Together, Terraform + Conftest + OPA form a pre-deployment compliance pipeline, validating your IaC before it ever reaches AWS.
+
+- OPA = policy engine.
+- Conftest = friendly CLI that runs OPA on your files.
+- Put policies in ./policy or use -p ..
+- Use --all-namespaces if your package isn’t main.
+
+</details>
+
 ---
 
 ## Skills Demonstrated
