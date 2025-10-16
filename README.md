@@ -151,8 +151,8 @@ FAIL - tfplan.json - s3policy - Bucket policy allows public access: arn:aws:s3::
 
 | Framework                                        | Control / Description                                   |
 | ------------------------------------------------ | ------------------------------------------------------- | 
-| NIST 800-53 Rev 5                                | AC-6 - Least Privilege                                  | 
-| NIST 800-53 Rev 5                                | SC-7 - Boundary protection & public access restrictions | 
+| NIST 800-53 5.2.0                                | AC-6 - Least Privilege                                  | 
+| NIST 800-53 5.2.0                                | SC-7 - Boundary protection & public access restrictions | 
 | AWS Foundational Security Best Practice          | S3.1 - S3 Block Public Access setting should be enabled |
 
 ---
