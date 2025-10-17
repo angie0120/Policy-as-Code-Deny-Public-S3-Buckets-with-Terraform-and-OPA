@@ -1,4 +1,4 @@
-# Policy-as-Code Lab 01: Deny Public S3 Buckets (Terraform + OPA)
+# Policy-as-Code Lab: Deny Public S3 Buckets (Terraform + OPA)
 
 A hands-on Policy-as-Code lab demonstrating how to detect and block public S3 bucket access using Terraform plans, OPA, and Conftest before deployment.
 
